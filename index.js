@@ -25,7 +25,7 @@ module.exports.timezone = function timezone(lat, lon, id, key, callback) {
   }
 
   superagent
-  .get(BASE_URL + '/' + ACCOUNT_ID + '/' + API_KEY + '/query.json')
+  .get(BASE_URL + '/' + id + '/' + key + '/query.json')
   .query({
     databases: 'TimeZone'
   })
@@ -36,9 +36,9 @@ module.exports.timezone = function timezone(lat, lon, id, key, callback) {
     if (err) {
       callback(err);
     } else if (!res.ok) {
-      callback(new Error(res));
+      callback(new Error(res.text));
     } else if (res.body.code !== 0) {
-      callback(null, res.body.message);
+      callback(new Error(res.body.message));
     } else {
       callback(null, res.body.data[0].TimeZone);
     }
