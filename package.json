@@ -1,6 +1,6 @@
 {
   "name": "askgeo",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Simple wrapper for the AskGeo web API",
   "main": "index.js",
   "scripts": {
